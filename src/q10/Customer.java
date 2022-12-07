@@ -4,75 +4,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-	
-	private List<Order> orderList;
-	private int age;
+
 	private String name;
-	private List<Product> products;
+	private int age;
+	private List<Order> orders;
+	private Invoice amount;
 	
 	
-	
-	@Override
-	public String toString() {
-		return "Customer [orderList=" + orderList + ", age=" + age + ", name=" + name + ", products=" + products + "]";
+	public Invoice getAmount() {
+		return amount;
 	}
 
 
-	public List<Product> getProducts() {
-		return products;
+	public void setAmount(Invoice amount) {
+		this.amount = amount;
 	}
 
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
-
-
+	//invoice ekleyip denenebilir!!
 	public Customer() {
-		super();
+		this.orders = new ArrayList<>();
 	}
+	
 
-
-	public Customer(String name, int age) {
-		this.orderList = new ArrayList<>();
-		this.name = name;
-		this.age = age;
+	public void addOrder(Order order) {
+		orders.add(order);
 	}
-
-
-	public List<Order> getOrderList() {
-		return orderList;
+	public List<Order> getOrders() {
+		return orders;
 	}
-
-
-	public void setOrderList(List<Order> orderList) {
-		this.orderList = orderList;
-	}
-
-
-	public int getAge() {
-		return age;
-	}
-
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-
+	
 	public String getName() {
 		return name;
 	}
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-
-
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
 	
+	
+		
 	
 	
 }
