@@ -1,7 +1,10 @@
 package q10;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 	public static void main(String[] args) {
@@ -37,6 +40,9 @@ public class Main {
 		cemOrder.addProduct(cola);
 		cemOrder.addProduct(telefon);
 		cemOrder.addProduct(canta);
+		Order cemOrder2 = new Order();
+		cemOrder.addProduct(canta);
+		cemOrder.addProduct(telefon);
 		
 		Order beyzaOrder = new Order();
 		beyzaOrder.addProduct(cola);
@@ -50,6 +56,7 @@ public class Main {
 		selim.addOrder(selimOrder);
 		cem.addOrder(cemOrder);
 		beyza.addOrder(beyzaOrder);
+		cem.addOrder(cemOrder2);
 		
 
 		
@@ -70,15 +77,19 @@ public class Main {
 		invoiceList.add(selimInvoice);
 		invoiceList.add(cemInvoice);
 		invoiceList.add(beyzaInvoice);
-		
+	
 		
 		System.out.println("Toplam musteri sayisi " +customerList.size());
 		System.out.println("------------------");
 		
-		long howManyCem = customerList.stream().filter(cemName -> cemName.getName() == "Cem").count();
-		System.out.println("Cem isminde musteri sayisi " +howManyCem);
+		System.out.println("Cem ismindeki musterinin order adedi");
+		for (Customer customer : customerList) {
+			if (customer.getName().equals("Cem")) {
+				System.out.println( customer.getOrders().size());
+
+			}
+		}
 		System.out.println("------------------");
-		
 		System.out.println("1500 TL uzerindeki faturalar");
 		invoiceList.stream().filter(t -> t.getAmount() > 1500).forEach(System.out::println);
 
